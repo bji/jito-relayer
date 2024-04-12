@@ -46,6 +46,7 @@ use solana_sdk::{
     address_lookup_table_account::AddressLookupTableAccount,
     pubkey::Pubkey,
     signature::{read_keypair_file, Signer},
+    txingest::txingest_connect,
 };
 use solana_validator::admin_rpc_service::StakedNodesOverrides;
 use tikv_jemallocator::Jemalloc;
@@ -230,6 +231,10 @@ struct Args {
     ///  Format of the file: `staked_map_id: {<pubkey>: <SOL stake amount>}"
     #[arg(long, env)]
     staked_nodes_overrides: Option<PathBuf>,
+
+    // txingest host, will be sent txingest messages
+    #[arg(long, env)]
+    txingest_host: Option<String>,
 }
 
 #[derive(Debug)]
@@ -345,6 +350,10 @@ fn main() {
         !public_ip.is_loopback(),
         "Your public IP can't be the loopback interface"
     );
+
+    if let Some(txingest_host) = &args.txingest_host {
+        txingest_connect(txingest_host.as_str());
+    }
 
     // Supporting IPV6 addresses is a DOS vector since they are cheap and there's a much larger amount of them.
     // The DOS is specifically with regards to the challenges queue filling up and starving other legitimate
