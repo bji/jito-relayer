@@ -57,7 +57,7 @@ serde = { version = "1.0.160", features = ["derive"] }
 serde_json = "1.0.96"
 serde_yaml = "0.9.32"
 sha2 = "0.10.6"
-solana-address-lookup-table-program = { path = "/path/to/your/solana/address-lookup-table-program" }
+solana-address-lookup-table-program = { path = "/path/to/your/solana/programs/address-lookup-table" }
 solana-client = { path = "/path/to/your/solana/client" }
 solana-core = { path = "/path/to/your/solana/core" }
 solana-gossip = { path = "/path/to/your/solana/gossip" }
@@ -65,7 +65,7 @@ solana-measure = { path = "/path/to/your/solana/measure" }
 solana-metrics = { path = "/path/to/your/solana/metrics" }
 solana-net-utils = { path = "/path/to/your/solana/net-utils" }
 solana-perf = { path = "/path/to/your/solana/perf" }
-solana-program = { path = "/path/to/your/solana/program" }
+solana-program = { path = "/path/to/your/solana/sdk/program" }
 solana-rayon-threadlimit = { path = "/path/to/your/solana/rayon-threadlimit" }
 solana-runtime = { path = "/path/to/your/solana/runtime" }
 solana-sdk = { path = "/path/to/your/solana/sdk" }
@@ -84,7 +84,7 @@ tower = { version = "0.4.1", features = ["limit"] }
 lto = "thin"
 
 [patch.crates-io]
-solana-program = { path = "/path/to/your/solana/program" }
+solana-program = { path = "/path/to/your/solana/sdk/program" }
 solana-zk-token-sdk = { path = "/path/to/your/solana/zk-token-sdk" }
 
 # enable debug symbols for profiling the heap using jeprof
